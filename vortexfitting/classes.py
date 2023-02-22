@@ -12,8 +12,8 @@ class VelocityField:
     """
     Data file
 
-    Loads the input file with the NetCFD (.nc) 
-    format or a Tecplot format (.dat); 
+    Loads the input file with the NetCFD (.nc)
+    format or a Tecplot format (.dat);
     initialize the variables.
 
     :param file_path: file path
@@ -42,11 +42,11 @@ class VelocityField:
     :type  normalization_direction: str
     :param x_coordinate_step: for homogeneous mesh, provides a unique step
     :type  x_coordinate_step: float
-    :param y_coordinate_step: for homogeneous mesh, provides a unique step 
+    :param y_coordinate_step: for homogeneous mesh, provides a unique step
     :type  y_coordinate_step: float
-    :param z_coordinate_step: for homogeneous mesh, provides a unique step 
+    :param z_coordinate_step: for homogeneous mesh, provides a unique step
     :type  z_coordinate_step: float
-    :param derivative: contains 'dudx', 'dudy', 'dvdx', 'dvdy'. 
+    :param derivative: contains 'dudx', 'dudy', 'dvdx', 'dvdy'.
                        Can be extended to the 3rd dimension
     :type  derivative: dict
     :returns: vfield, an instance of the VelocityField class
@@ -189,7 +189,7 @@ class VelocityField:
                 if dx_tmp[i] == dx_tmp[0]:
                     self.y_coordinate_size = i
                     break
-            self.x_coordinate_size = np.int(dx_tmp.shape[0] / self.y_coordinate_size)  # domain size
+            self.x_coordinate_size = dx_tmp.shape[0] // self.y_coordinate_size  # domain size
             self.z_coordinate_size = 1
 
             self.u_velocity_matrix = np.array(datafile_read[:, index_u]).reshape(self.x_coordinate_size,
